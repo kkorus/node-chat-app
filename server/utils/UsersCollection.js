@@ -10,7 +10,12 @@ class UsersCollection {
     }
 
     removeUser(id) {
-        this.users = this.users.filter(user => user.id !== id);
+        const user = this.getUser(id);
+        if (user) {
+            this.users = this.users.filter(user => user.id !== id);
+        }
+
+        return user;
     }
 
     getUser(id) {
@@ -24,4 +29,4 @@ class UsersCollection {
     }
 }
 
-module.exports = { UsersCollection };
+module.exports = UsersCollection;

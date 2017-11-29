@@ -1,5 +1,5 @@
 const expect = require('expect');
-const { UsersCollection } = require('./users');
+const UsersCollection = require('./UsersCollection');
 
 describe('Users', () => {
     var users;
@@ -22,18 +22,26 @@ describe('Users', () => {
     });
 
     it('should remove a user', () => {
+        var userId = '1';
+        var user = users.removeUser(userId);
 
+        expect(user.id).toBe(userId);
+        expect(users.users.length).toBe(2);
     });
 
     it('should not remove a user', () => {
+        var userId = '99';
+        var user = users.removeUser(userId);
 
+        expect(user.id).toBe(userId);
+        expect(users.users.length).toBe(3);
     });
 
     it('should find a user', () => {
         var userId = '2';
         var user = users.getUser(userId);
 
-        expect(user.Id).toBe(userId);
+        expect(user.id).toBe(userId);
     });
 
     it('should not find user', () => {
